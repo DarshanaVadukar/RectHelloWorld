@@ -1,73 +1,16 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+Main - Hello word demo
 
-# Getting Started
+init project through rect native CLI npx react-native@latest init RectHelloWorld
+upload to git by copy paste code in imported git link and then push all code to git
+assignment2
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+Custom Font
+Added required font .ttf file in assets\fonts folder
 
-## Step 1: Start the Metro Server
+Created File “react-native.config.js” in main project folder and add following code if React Native Version ≥ 0.60 (Detail) module.exports = { project: { ios: {}, android: {}, // grouped into "project" }, assets: ["./assets/fonts/"], // stays the same };
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+if React Native Version < 0.60 "rnpm": { "assets": [ "./assets/fonts/" ] }
 
-To start Metro, run the following command from the _root_ of your React Native project:
+Install globally via adding code in terminal npm install -g react-native-asset or yarn global add react-native-asset
 
-```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-Main branch showing Hello Word text print in the middle of first screen.
+then add command in terminal Due to autolinking, link and unlink commands have been removed in React Native 0.69. Run in terminal For React Native Version ≥ 0.69 npx react-native-asset For React Native Version< 0.69 $ npx react-native link
