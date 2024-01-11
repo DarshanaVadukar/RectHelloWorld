@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import {ActivityIndicator, Button, StyleSheet, View} from 'react-native';
 import WebView from 'react-native-webview';
@@ -55,7 +54,7 @@ const WebViewScreen: React.FC<Props> = ({navigation}) => {
       <Button
         title="Go To ListDialog"
         onPress={() => {
-          navigation.navigate(SCREENS.LISTALERT);
+          navigation.navigate(SCREENS.ALERTDIALOG);
         }}
       />
     </View>

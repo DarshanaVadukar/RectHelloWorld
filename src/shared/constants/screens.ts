@@ -1,5 +1,6 @@
 export enum SCREENS {
   HOME = 'Home',
   WEBVIEW = 'WebView',
-  LISTALERT = 'ListAlert',
+  ALERTDIALOG = 'ListAlert',
+  LISTDIALOG = 'ListDialog',
 }
