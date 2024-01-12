@@ -1,6 +1,13 @@
 import {CommonActions, useNavigation} from '@react-navigation/native';
-import React from 'react';
-import {SectionList, StatusBar, StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {
+  SectionList,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+  RefreshControl,
+} from 'react-native';
 import {SCREENS} from '../../shared/constants/screens';
 
 interface DataItem {
@@ -59,6 +66,17 @@ const userSectionData = Object.values(sections);
 
 const UserListScreen: React.FC = () => {
   const navigation = useNavigation();
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = () => {
+    // Handle the refresh action here
+    // Typically, you would fetch new data from your server or perform some asynchronous operation
+    // For example, you can use the setTimeout function to simulate an asynchronous operation
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000); // Simulate a 2-second delay
+  };
 
   return (
     <View style={styles.container}>
@@ -89,6 +107,9 @@ const UserListScreen: React.FC = () => {
           // Your renderSectionHeader component here
           <Text style={styles.header}>{title}</Text>
         )}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
       />
     </View>
   );
