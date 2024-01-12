@@ -3,4 +3,6 @@ export enum SCREENS {
   WEBVIEW = 'WebView',
   ALERTDIALOG = 'ListAlert',
   LISTDIALOG = 'ListDialog',
+  USERLIST = 'UserList',
+  USERDETAIL = 'UserDetail',
 }
