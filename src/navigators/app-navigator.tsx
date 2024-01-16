@@ -7,6 +7,7 @@ import ListDialogScreen from '../screens/ListDialogScreen';
 import AlertDialogScreen from '../screens/AlertDialogScreen';
 import UserListScreen from '../screens/UserListScreen';
 import UserDetailScreen from '../screens/UserDetailScreen';
+import EditUserDetail from '../screens/EditUserDetailScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -24,6 +25,7 @@ const AppNavigator: React.FC = () => {
       <Stack.Screen name={SCREENS.LISTDIALOG} component={ListDialogScreen} />
       <Stack.Screen name={SCREENS.USERLIST} component={UserListScreen} />
       <Stack.Screen name={SCREENS.USERDETAIL} component={UserDetailScreen}/>
+      <Stack.Screen name={SCREENS.EDITUSERDETAIL} component={EditUserDetail} />
     </Stack.Navigator>
   );
 };

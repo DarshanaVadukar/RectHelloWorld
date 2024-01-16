@@ -5,4 +5,5 @@ export enum SCREENS {
   LISTDIALOG = 'ListDialog',
   USERLIST = 'UserList',
   USERDETAIL = 'UserDetail',
+  EDITUSERDETAIL = 'EditUserData',
 }
