@@ -14,6 +14,7 @@ const UserDetailScreen = ({route}) => {
   const navigation = useNavigation();
 
   const {itemData} = route.params;
+  // const staticImagePath = require('../../../assets/images/user.png');
 
   // console.log('>>>name' + itemData.name);
   // console.log('>>>id' + itemData.id.toString());
@@ -29,11 +30,10 @@ const UserDetailScreen = ({route}) => {
     }
   }, [route.params?.itemData]);
 
-
   const handleImageClick = () => {
     navigation.dispatch(
       CommonActions.navigate({
-        name: SCREENS.EDITUSERDETAIL,
+        name: SCREENS.EDIT_USER_DETAIL,
         params: {userDataModel: itemData},
       }),
     );
@@ -50,17 +50,17 @@ const UserDetailScreen = ({route}) => {
         </TouchableOpacity>
         <View style={styles.containerUserTop}>
           <View>
-            {/* {!itemData.profilePhoto ? ( */}
-            <Image
-              source={require('../../../assets/images/user.png')}
-              style={styles.image}
-            />
-            {/* ) : (
+            {!itemData.profilePhoto ? (
+              <Image
+                source={require('../../../assets/images/user.png')}
+                style={styles.image}
+              />
+            ) : (
               <Image
                 source={{uri: itemData.profilePhoto}}
                 style={styles.image}
               />
-            )} */}
+            )}
           </View>
           <View style={styles.userNameContainer}>
             <Text>UserId: {itemData.id.toString()}</Text>

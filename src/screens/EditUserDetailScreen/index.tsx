@@ -7,24 +7,47 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   View,
 } from 'react-native';
 import BottomSheetDialog from './bottomsheetdialog';
 import ImageCropPicker from 'react-native-image-crop-picker';
-import {CommonActions, useNavigation, useRoute} from '@react-navigation/native';
-import {Screen} from 'react-native-screens';
 import {SCREENS} from '../../shared/constants/screens';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import {useRoute, useNavigation, CommonActions} from '@react-navigation/native';
+import moment from 'moment';
 
 const EditUserDetail = () => {
   const route = useRoute();
+  const phonePattern = new RegExp(/^\d{1,10}$/);
+  const emailPattern = new RegExp(
+    /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+  );
   const navigation = useNavigation();
   const [isModelVisible, setModelVisible] = useState(false);
-  const [filePath, setFilePath] = useState('');
   // Access the dataModel from the route parameters
   const {userDataModel} = route.params;
 
   console.log('>>>userDataModel' + JSON.stringify(userDataModel));
   const [text, onChangeText] = React.useState(userDataModel.name);
+  const [emailText, onChangeEmailText] = React.useState(userDataModel.email);
+  const [phone, onChangePhone] = React.useState(userDataModel.phoneNo);
+
+  let finalBirthDate = userDataModel.birthDate;
+
+  // Parse the original date string using the 'DD-MM-YYYY' format
+  const originalDate = moment(userDataModel.birthDate, 'DD-MM-YYYY');
+
+  // Format the date to 'YYYY-MM-DD' format
+  const formattedDate = originalDate.format('YYYY-MM-DD');
+  const [birthDate, onChangeBirthDate] = React.useState(formattedDate);
+
+  const [filePath, setFilePath] = useState(userDataModel.profilePhoto);
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
 
   const staticImagePath = require('../../../assets/images/user.png');
 
@@ -130,6 +153,21 @@ const EditUserDetail = () => {
     } else if (!filePath.trim()) {
       Alert.alert('Please upload profile image.');
       return false;
+    } else if (!emailText.trim()) {
+      Alert.alert('Please enter user email.');
+      return false;
+    } else if (!emailText.match(emailPattern)) {
+      Alert.alert('Please enter valid email.');
+      return false;
+    } else if (!phone.toString().trim()) {
+      Alert.alert('Please enter user phone number.');
+      return false;
+    } else if (
+      !phone.toString().match(phonePattern) ||
+      phone.toString().length < 10
+    ) {
+      Alert.alert('Please enter valid phone number.');
+      return false;
     }
     return true;
   };
@@ -137,7 +175,8 @@ const EditUserDetail = () => {
   const handleBackWithData = () => {
     if (checkValidation()) {
       userDataModel.name = text;
-      userDataModel.
+      userDataModel.profilePhoto = filePath;
+      userDataModel.birthDate = finalBirthDate;
       navigation.dispatch(
         CommonActions.navigate({
           name: SCREENS.USERDETAIL,
@@ -147,6 +186,28 @@ const EditUserDetail = () => {
         }),
       );
     }
+  };
+
+  const onChang = (event: any, selectDate: Date) => {
+    const currentDate = selectDate || birthDate;
+    console.log('BirthDate' + currentDate);
+    setDatePickerVisibility(false);
+    let tempDate = new Date(currentDate);
+    let fDate =
+      tempDate.getDate().toString().padStart(2, '0') +
+      '-' +
+      (tempDate.getMonth() + 1).toString().padStart(2, '0') +
+      '-' +
+      tempDate.getFullYear();
+    console.log('BirthDatefDate' + fDate);
+    finalBirthDate = fDate;
+    // setShow(Platform.OS === 'ios');
+    // setDate(currentDate);
+
+    // let tempDate = new Date(currentDate);
+    // let fDate = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear();
+    // let fTime = "Hours: " + tempDate.getHours() + ' | Minutes: ' + tempDate.getMinutes();
+    // setText(fDate + '\n' + fTime);
   };
 
   return (
@@ -164,6 +225,42 @@ const EditUserDetail = () => {
         onChangeText={onChangeText}
         value={text}
       />
+      <Text style={styles.textInputTitle}>User Email: </Text>
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeEmailText}
+        value={emailText}
+        inputMode="email"
+      />
+      <Text style={styles.textInputTitle}>User Phone Number: </Text>
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangePhone}
+        value={phone.toString()}
+        inputMode="numeric"
+        maxLength={10}
+      />
+      <Text style={styles.textInputTitle}>User Birth Date: </Text>
+      <TouchableWithoutFeedback onPress={showDatePicker}>
+        <View pointerEvents="box-only">
+          <TextInput
+            value={birthDate}
+            style={styles.input}
+            onChangeText={onChangeBirthDate}
+          />
+
+          {isDatePickerVisible && (
+            <DateTimePicker
+              testID="dateTimePicker"
+              value={new Date(birthDate)}
+              mode={'date'}
+              is24Hour={true}
+              display="default"
+              onChange={onChang}
+            />
+          )}
+        </View>
+      </TouchableWithoutFeedback>
       <TouchableOpacity onPress={handleBackWithData}>
         <Text style={styles.btnSave}>Save</Text>
       </TouchableOpacity>
