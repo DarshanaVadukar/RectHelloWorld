@@ -9,22 +9,9 @@ import {
   RefreshControl,
 } from 'react-native';
 import {SCREENS} from '../../shared/constants/screens';
-
-enum EmploymentStatus {
-  FULLTIME,
-  PARTTIME,
-  NONE,
-}
-
-enum Gender {
-  MALE,
-  FEMALE,
-}
-
-enum ProfileStatus {
-  PUBLIC,
-  PRIVATE,
-}
+import {ProfileStatus} from '../../shared/constants/enum';
+import {EmploymentStatus} from '../../shared/constants/enum';
+import { Gender } from '../../shared/constants/enum';
 
 interface DataItem {
   id: number;
@@ -200,7 +187,7 @@ const data: DataItem[] = [
     id: 14,
     name: 'Brooke',
     email: 'a@b.com',
-    profilePhoto :'',
+    profilePhoto: '',
     phoneNo: 1234567890,
     gender: Gender.FEMALE,
     birthDate: '04-11-1995',
@@ -212,7 +199,7 @@ const data: DataItem[] = [
     id: 15,
     name: 'Clara',
     email: 'a@b.com',
-    profilePhoto :'',
+    profilePhoto: '',
     phoneNo: 1234567890,
     gender: Gender.FEMALE,
     birthDate: '04-11-1995',
@@ -224,7 +211,7 @@ const data: DataItem[] = [
     id: 16,
     name: 'Birdie',
     email: 'a@b.com',
-    profilePhoto :'',
+    profilePhoto: '',
     phoneNo: 1234567890,
     gender: Gender.FEMALE,
     birthDate: '04-11-1995',
@@ -236,7 +223,7 @@ const data: DataItem[] = [
     id: 17,
     name: 'Andrew',
     email: 'a@b.com',
-    profilePhoto :'',
+    profilePhoto: '',
     phoneNo: 1234567890,
     gender: Gender.FEMALE,
     birthDate: '04-11-1995',
@@ -248,7 +235,7 @@ const data: DataItem[] = [
     id: 18,
     name: 'Claire',
     email: 'a@b.com',
-    profilePhoto :'',
+    profilePhoto: '',
     phoneNo: 1234567890,
     gender: Gender.FEMALE,
     birthDate: '04-11-1995',
@@ -260,7 +247,7 @@ const data: DataItem[] = [
     id: 19,
     name: 'Bonnie',
     email: 'a@b.com',
-    profilePhoto :'',
+    profilePhoto: '',
     phoneNo: 1234567890,
     gender: Gender.FEMALE,
     birthDate: '04-11-1995',
@@ -272,7 +259,7 @@ const data: DataItem[] = [
     id: 20,
     name: 'Dakota',
     email: 'a@b.com',
-    profilePhoto :'',
+    profilePhoto: '',
     phoneNo: 1234567890,
     gender: Gender.FEMALE,
     birthDate: '04-11-1995',
@@ -284,7 +271,7 @@ const data: DataItem[] = [
     id: 21,
     name: 'Derek',
     email: 'a@b.com',
-    profilePhoto :'',
+    profilePhoto: '',
     phoneNo: 1234567890,
     gender: Gender.FEMALE,
     birthDate: '04-11-1995',
@@ -296,7 +283,7 @@ const data: DataItem[] = [
     id: 22,
     name: 'Devin',
     email: 'a@b.com',
-    profilePhoto :'',
+    profilePhoto: '',
     phoneNo: 1234567890,
     gender: Gender.FEMALE,
     birthDate: '04-11-1995',
