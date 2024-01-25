@@ -9,7 +9,7 @@ const ListDialogScreen = () => {
   const [isListDialogVisible, setListDialogVisible] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const data = [
-    {id: 1, label: 'Option 1'},
+    {id: 1, label: 'Move To List Item'},
     {id: 2, label: 'Option 2'},
     {id: 3, label: 'Option 3'},
   ];
@@ -31,7 +31,7 @@ const ListDialogScreen = () => {
           name: SCREENS.USERLIST,
         }),
       );
-    }
+    } 
   };
 
   return (

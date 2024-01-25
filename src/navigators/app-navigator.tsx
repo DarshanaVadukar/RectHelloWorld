@@ -8,6 +8,7 @@ import AlertDialogScreen from '../screens/AlertDialogScreen';
 import UserListScreen from '../screens/UserListScreen';
 import UserDetailScreen from '../screens/UserDetailScreen';
 import EditUserDetail from '../screens/EditUserDetailScreen';
+import BottomTabScreen from '../screens/BottomTabBarScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,10 @@ const AppNavigator: React.FC = () => {
       <Stack.Screen
         name={SCREENS.EDIT_USER_DETAIL}
         component={EditUserDetail}
+      />
+      <Stack.Screen
+        name={SCREENS.BOTTOM_TAB_SCREEN}
+        component={BottomTabScreen}
       />
     </Stack.Navigator>
   );
