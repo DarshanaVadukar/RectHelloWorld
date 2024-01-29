@@ -3,7 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SCREENS} from '../shared/constants/screens';
 import HelloWorldScreen from '../screens/HelloWorldScreen';
 import WebViewScreen from '../screens/WebViewScreen';
-import {Icon} from 'react-native-vector-icons/Icon';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,10 +15,10 @@ const AppBottomNavigator: React.FC = () => {
           let iconName;
           if (route.name === SCREENS.HOME) {
             iconName = focused
-              ? 'ios-information-circle'
-              : 'ios-information-circle-outline';
+              ? 'rocket'
+              : 'rocket';
           } else if (route.name === SCREENS.WEBVIEW) {
-            iconName = focused ? 'ios-list' : 'rocket';
+            iconName = focused ? 'rocket' : 'rocket';
           }
           // You can return any component that you like here!
           return <Icon name={iconName} size={size} color={color} />;
