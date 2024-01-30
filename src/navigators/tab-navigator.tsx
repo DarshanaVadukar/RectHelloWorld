@@ -7,25 +7,29 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Tab = createBottomTabNavigator();
 
+// Define the screen options outside of the component
+const screenOptions = ({route}) => ({
+  tabBarIcon: ({focused, color, size}) => {
+    const iconName = getIconNameForTabBar(route, focused);
+    return <Icon name={iconName} size={size} color={color} />;
+  },
+  tabBarActiveTintColor: 'tomato',
+  tabBarInactiveTintColor: 'gray',
+});
+
+const getIconNameForTabBar = (route: any, focused: boolean) => {
+  let iconName;
+  if (route.name === SCREENS.HOME) {
+    iconName = focused ? 'star' : 'rocket';
+  } else if (route.name === SCREENS.WEBVIEW) {
+    iconName = focused ? 'cloud' : 'rocket';
+  }
+  return iconName;
+};
+
 const AppBottomNavigator: React.FC = () => {
   return (
-    <Tab.Navigator
-      screenOptions={({route}) => ({
-        tabBarIcon: ({focused, color, size}) => {
-          let iconName;
-          if (route.name === SCREENS.HOME) {
-            iconName = focused
-              ? 'rocket'
-              : 'rocket';
-          } else if (route.name === SCREENS.WEBVIEW) {
-            iconName = focused ? 'rocket' : 'rocket';
-          }
-          // You can return any component that you like here!
-          return <Icon name={iconName} size={size} color={color} />;
-        },
-        tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'gray',
-      })}>
+    <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen
         name={SCREENS.HOME}
         component={HelloWorldScreen}
