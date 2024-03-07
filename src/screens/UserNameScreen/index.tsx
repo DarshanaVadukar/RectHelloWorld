@@ -4,7 +4,10 @@ import Mytext from '../components/Mytext';
 import Mytextinput from '../components/Mytextinput';
 import Mybutton from '../components/Mybutton';
 import {useNavigation} from '@react-navigation/native';
-import {openDatabase} from 'react-native-sqlite-storage';
+import {enablePromise, openDatabase} from 'react-native-sqlite-storage';
+
+// Enable promise for SQLite
+enablePromise(true)
 
 var db = openDatabase({name: 'UserDatabase.db'});
 

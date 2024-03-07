@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1045894113859",
+    "project_id": "rectfirebasenotidemo",
+    "storage_bucket": "rectfirebasenotidemo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1045894113859:android:d1df4d7ab16aebc2c202f6",
+        "android_client_info": {
+          "package_name": "com.hellornproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJ8XDJUloRD4JGArFl1jTuGVmBnuBbMq0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
