@@ -45,8 +45,8 @@ const App: React.FC = () => {
     //   </NavigationContainer>
     // </SafeAreaProvider>
     // <AuthTokenFlow />
-    // <DBSqliteNavigationAssignment4 />
-    <ApiSauceNavigator />
+    <DBSqliteNavigationAssignment4 />
+    // <ApiSauceNavigator />
   );
 };
 

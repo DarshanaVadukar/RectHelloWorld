@@ -18,7 +18,8 @@ const AlertDialogScreen = () => {
           text: 'Move To List Dialog Screen',
           onPress: () => {
             navigation.navigate(SCREENS.LISTDIALOG);
-        }},
+        }
+      },
         {text: '', style: 'cancel'},
       ],
       {cancelable: true},
