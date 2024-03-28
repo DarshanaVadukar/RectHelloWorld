@@ -13,6 +13,14 @@ import ApiSauceNavigator from './src/navigators/api-navigator-apisauce';
 import { Alert, Platform } from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 import { addPermissionOfNotiForAndroid33, getToken, notificationListener, requestUserPermission } from './src/utils/commonUtils';
+import { applyMiddleware, legacy_createStore as createStore } from 'redux';
+import { Provider } from 'react-redux';
+// import thunk from 'redux-thunk';
+// import logger from 'redux-logger';
+import favoriteReducer from './src/redux/root-reducer';
+import thunk from 'redux-thunk';
+
+export const store = createStore(favoriteReducer, applyMiddleware(thunk));
 
 const App: React.FC = () => {
 
@@ -34,6 +42,8 @@ const App: React.FC = () => {
     }
   }, []);
 
+ 
+
   return (
     // <SafeAreaProvider>
     //   <NavigationContainer>
@@ -45,8 +55,12 @@ const App: React.FC = () => {
     //   </NavigationContainer>
     // </SafeAreaProvider>
     // <AuthTokenFlow />
-    <DBSqliteNavigationAssignment4 />
-    // <ApiSauceNavigator />
+    // <DBSqliteNavigationAssignment4 />
+    <SafeAreaProvider>
+      <Provider store={store}>
+      <ApiSauceNavigator />
+      </Provider>
+    </SafeAreaProvider>
   );
 };
 

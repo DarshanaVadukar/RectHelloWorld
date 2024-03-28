@@ -1,23 +1,32 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import FetchListScreen from '../screens/FetchListScreen';
-import {NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer, createNavigationContainerRef } from '@react-navigation/native';
+import { NavigatorParamList } from './apisauce-navigation-routes';
+import { BottomTab } from './bottom-tab/bottom-tab-navigator';
+import { LoginScreen } from '../screens/login-screen/login-screen.screen';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<NavigatorParamList>();
 
-const ApiSauceNavigator: React.FC = () => {
+type NavigationProps = Partial<React.ComponentProps<typeof NavigationContainer>>
+
+export const navigationRef = createNavigationContainerRef();
+
+const ApiSauceNavigator: React.FC = (props: NavigationProps) => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName={'Home'}>
-        <Stack.Screen
-          name="FetchListScreen"
-          component={FetchListScreen}
-          options={{title: 'Home'}}
-        />
-        {/* <Stack.Screen name={SCREENS.WEBVIEW} component={WebViewScreen} /> */}
-      </Stack.Navigator>
+    <NavigationContainer ref={navigationRef} {...props}>
+      <AppStack />
     </NavigationContainer>
   );
 };
+
+const AppStack: React.FC = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="LOGIN_SCREEN" component={LoginScreen} />
+      <Stack.Screen name="BOTTOM_TABS" component={BottomTab} />
+    </Stack.Navigator>
+  );
+}
 
 export default ApiSauceNavigator;
