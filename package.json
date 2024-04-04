@@ -84,9 +84,5 @@
   },
   "engines": {
     "node": ">=18"
-  },
-  "description": "Main - Hello word demo  - init project through rect native CLI npx react-native@latest init RectHelloWorld - upload to git by copy paste code in imported git link and then push all code to git",
-  "main": "index.js",
-  "author": "",
-  "license": "ISC"
+  }
 }

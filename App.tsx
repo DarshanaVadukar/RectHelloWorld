@@ -15,8 +15,6 @@ import messaging from '@react-native-firebase/messaging';
 import { addPermissionOfNotiForAndroid33, getToken, notificationListener, requestUserPermission } from './src/utils/commonUtils';
 import { applyMiddleware, legacy_createStore as createStore } from 'redux';
 import { Provider } from 'react-redux';
-// import thunk from 'redux-thunk';
-// import logger from 'redux-logger';
 import favoriteReducer from './src/redux/root-reducer';
 import thunk from 'redux-thunk';
 

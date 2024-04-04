@@ -13,6 +13,7 @@ interface FavouriteProps{
 }
 
 export const FavoriteListItemComponent = (props: FavouriteProps) => {
+  console.log("FavoriteListItemComponent>>>",props.item);
     return (
       <View style={styles.listItemContainer}>
         <Image

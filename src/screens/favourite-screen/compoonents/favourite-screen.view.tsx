@@ -21,7 +21,7 @@ console.log("favouriteList " +favouriteList);
 
   return (
     <View style={styles.mainView}>
-      {/* <View style={styles.listView}> */}
+      <View style={styles.listView}>
         <FlatList
           data={favouriteList}
           renderItem={({ item }) => renderItem(item)}
@@ -31,7 +31,7 @@ console.log("favouriteList " +favouriteList);
             <Text style={styles.noFavorites}>{ErrorMessages.NO_FAVORITES}</Text>
           )}
         />
-      {/* </View> */}
+      </View>
     </View>
 
   );

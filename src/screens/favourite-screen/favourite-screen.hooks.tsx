@@ -7,9 +7,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export const useFavouriteScreenHook = (): IFavouriteProps => {
 
+    const favouriteList = useSelector((state: RootState) => state.favoriteReducer.favouriteItems);
     const dispatch = useDispatch();
 
-    const favouriteList = useSelector((state: RootState) => state.favoriteReducer.favouriteItems);
 
     console.log("favouriteList from hook ", favouriteList);
 
@@ -17,5 +17,5 @@ export const useFavouriteScreenHook = (): IFavouriteProps => {
         dispatch(unFavourite(item) as unknown as AnyAction);
     };
 
-    return { favouriteList, unFavoriteUser };
+    return {  unFavoriteUser ,favouriteList,};
 }

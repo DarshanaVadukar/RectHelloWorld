@@ -20,13 +20,13 @@ const favouriteReducer = (state = initialState, action: AnyAction) => {
       console.log("newFavoriteItems ", newFavoriteItems);
       return Object.assign({}, state, {
         counter: state.counter - 1,
-        favoriteItems: newFavoriteItems,
+        favouriteItems: newFavoriteItems,
       });
     case 'ADD_TO_FAVORITES':
       console.log("add item ", action.payload);
       return Object.assign({}, state, {
         counter: state.counter + 1,
-        favoriteItems: [...state.favouriteItems, action.payload],
+        favouriteItems: [...state.favouriteItems, action.payload],
       });
     default:
       return state;
